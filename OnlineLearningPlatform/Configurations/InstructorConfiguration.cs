@@ -19,7 +19,33 @@ namespace OnlineLearningPlatform.Configurations
             builder.Property(x => x.Email).IsRequired().HasMaxLength(150);
             builder.Property(x => x.ShortBio).HasMaxLength(500);
             builder.Property(i => i.DateJoined).IsRequired();
-            //builder.HasMany(x => x.Courses);
+
+            builder.HasData(
+    new Instructor
+    {
+        Id = 1,
+        FullName = "Ahmed Mohamed",
+        Email = "ahmed@test.com",
+        ShortBio = "Backend Developer",
+        DateJoined = new DateTime(2024, 1, 1)
+    },
+    new Instructor
+    {
+        Id = 2,
+        FullName = "Sara Ali",
+        Email = "sara@test.com",
+        ShortBio = "Database Specialist",
+        DateJoined = new DateTime(2024, 2, 1)
+    },
+    new Instructor
+    {
+        Id = 3,
+        FullName = "Omar Hassan",
+        Email = "omar@test.com",
+        ShortBio = null,
+        DateJoined = new DateTime(2024, 3, 1)
+    }
+);
         }
     }
 }
