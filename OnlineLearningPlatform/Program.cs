@@ -126,50 +126,60 @@ namespace OnlineLearningPlatform
 
             #endregion
 
-            //Add
+            #region Create
+            //LearningPlatformActions actions = new LearningPlatformActions(context);
+            //var instructor = new Instructor
+            //{
+            //    FullName = "Mary Ayad",
+            //    DateJoined = DateTime.Now,
+            //    Email = "mary@test.com"
+            //};
+            //actions.AddInstructor(instructor);
+
+            //var students = new List<Student>
+            //    {
+            //        new()
+            //        {
+            //            FullName = "Student One",
+            //            Email = "one@test.com",
+            //            DateOfBirth = new DateTime(2000, 1, 1)
+            //        },
+            //        new()
+            //        {
+            //            FullName = "Student Two",
+            //            Email = "two@test.com",
+            //            DateOfBirth = new DateTime(2001, 2, 2)
+            //        },
+            //        new()
+            //        {
+            //            FullName = "Student Three",
+            //            Email = "three@test.com",
+            //            DateOfBirth = new DateTime(2002, 3, 3)
+            //        }
+            //    };
+            //actions.AddStudent(students);
+
+            //var enrollment = new Enrollment
+            //{
+            //    StudentId = 1,
+            //    CourseId = 1,
+            //    EnrollmentDate = DateTime.Now,
+            //    ProgressPercentage = 0,
+            //    Status = EnrollmentStatus.Active,
+            //    FinalGrade = null
+            //};
+
+            //actions.AddEnrollment(enrollment);
+            #endregion
+
+            #region Read
             LearningPlatformActions actions = new LearningPlatformActions(context);
-            var instructor = new Instructor
-            {
-                FullName = "Mary Ayad",
-                DateJoined = DateTime.Now,
-                Email = "mary@test.com"
-            };
-            actions.AddInstructor(instructor);
 
-            var students = new List<Student>
-                {
-                    new()
-                    {
-                        FullName = "Student One",
-                        Email = "one@test.com",
-                        DateOfBirth = new DateTime(2000, 1, 1)
-                    },
-                    new()
-                    {
-                        FullName = "Student Two",
-                        Email = "two@test.com",
-                        DateOfBirth = new DateTime(2001, 2, 2)
-                    },
-                    new()
-                    {
-                        FullName = "Student Three",
-                        Email = "three@test.com",
-                        DateOfBirth = new DateTime(2002, 3, 3)
-                    }
-                };
-            actions.AddStudent(students);
-
-            var enrollment = new Enrollment
-            {
-                StudentId = 1,
-                CourseId = 1,
-                EnrollmentDate = DateTime.Now,
-                ProgressPercentage = 0,
-                Status = EnrollmentStatus.Active,
-                FinalGrade = null
-            };
-
-            actions.AddEnrollment(enrollment);
+            actions.FilterCourses(500, 1000);
+            actions.FindCourseByID(1);
+            actions.FindCourseByTitle("SQL Fundamentals");
+            actions.CourseRoster(4);
+            #endregion
         }
     }
 }
