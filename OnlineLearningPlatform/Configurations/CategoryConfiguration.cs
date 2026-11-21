@@ -28,42 +28,43 @@ namespace OnlineLearningPlatform.Configurations
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasData(
-    new Category
-    {
-        Id = 1,
-        Name = "Programming",
-        Description = "Programming courses",
-        ParentCategoryId = null
-    },
-    new Category
-    {
-        Id = 2,
-        Name = "Backend",
-        Description = "Backend development",
-        ParentCategoryId = 1
-    },
-    new Category
-    {
-        Id = 3,
-        Name = "ASP.NET",
-        Description = "ASP.NET development",
-        ParentCategoryId = 2
-    },
-    new Category
-    {
-        Id = 4,
-        Name = "Database",
-        Description = "Database courses",
-        ParentCategoryId = null
-    },
-    new Category
-    {
-        Id = 5,
-        Name = "SQL Server",
-        Description = "SQL Server courses",
-        ParentCategoryId = 4
-    }
-);
+                    new Category
+                    {
+                        Id = 1,
+                        Name = "Programming",
+                        Description = "Programming courses",
+                        ParentCategoryId = null
+                    },
+                    new Category
+                    {
+                        Id = 2,
+                        Name = "Backend",
+                        Description = "Backend development",
+                        ParentCategoryId = 1
+                    },
+                    new Category
+                    {
+                        Id = 3,
+                        Name = "ASP.NET",
+                        Description = "ASP.NET development",
+                        ParentCategoryId = 2
+                    },
+                    new Category
+                    {
+                        Id = 4,
+                        Name = "Database",
+                        Description = "Database courses",
+                        ParentCategoryId = null
+                    },
+                    new Category
+                    {
+                        Id = 5,
+                        Name = "SQL Server",
+                        Description = "SQL Server courses",
+                        ParentCategoryId = 4
+                    }
+                );
+
         }
     }
 }

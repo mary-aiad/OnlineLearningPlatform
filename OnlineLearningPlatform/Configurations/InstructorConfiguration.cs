@@ -21,31 +21,32 @@ namespace OnlineLearningPlatform.Configurations
             builder.Property(i => i.DateJoined).IsRequired();
 
             builder.HasData(
-    new Instructor
-    {
-        Id = 1,
-        FullName = "Ahmed Mohamed",
-        Email = "ahmed@test.com",
-        ShortBio = "Backend Developer",
-        DateJoined = new DateTime(2024, 1, 1)
-    },
-    new Instructor
-    {
-        Id = 2,
-        FullName = "Sara Ali",
-        Email = "sara@test.com",
-        ShortBio = "Database Specialist",
-        DateJoined = new DateTime(2024, 2, 1)
-    },
-    new Instructor
-    {
-        Id = 3,
-        FullName = "Omar Hassan",
-        Email = "omar@test.com",
-        ShortBio = null,
-        DateJoined = new DateTime(2024, 3, 1)
-    }
-);
+                    new Instructor
+                    {
+                        Id = 1,
+                        FullName = "Ahmed Mohamed",
+                        Email = "ahmed@test.com",
+                        ShortBio = "Backend Developer",
+                        DateJoined = new DateTime(2024, 1, 1)
+                    },
+                    new Instructor
+                    {
+                        Id = 2,
+                        FullName = "Sara Ali",
+                        Email = "sara@test.com",
+                        ShortBio = "Database Specialist",
+                        DateJoined = new DateTime(2024, 2, 1)
+                    },
+                    new Instructor
+                    {
+                        Id = 3,
+                        FullName = "Omar Hassan",
+                        Email = "omar@test.com",
+                        ShortBio = null,
+                        DateJoined = new DateTime(2024, 3, 1)
+                    }
+                );
+
         }
     }
 }
