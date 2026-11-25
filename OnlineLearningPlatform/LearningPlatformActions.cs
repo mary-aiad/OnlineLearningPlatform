@@ -163,5 +163,70 @@ namespace OnlineLearningPlatform
                 Console.WriteLine(student.FullName);
             }
         }
+
+        public void UpdateCoursePrice(int courseId, decimal newPrice)
+        {
+            if (newPrice < 0)
+            {
+                Console.WriteLine("Invalid price.");
+                return;
+            }
+
+            var course = Context.Courses.FirstOrDefault(c => c.Id == courseId);
+            if (course == null)
+            {
+                Console.WriteLine("Course not found.");
+                return;
+            }
+           
+            course.Price = newPrice;
+            Context.SaveChanges();
+            Console.WriteLine("Course price updated.");
+
+
+        }
+
+        public void updateEnrollmentProgress(int studentID, int courseId, decimal newProgress)
+        {
+            if (newProgress < 0 || newProgress > 100)
+            {
+                Console.WriteLine("Progress must be between 0 and 100.");
+                return;
+            }
+
+            var enrollment = Context.Enrollments.FirstOrDefault(c => c.CourseId == courseId && c.StudentId == studentID);
+            if(enrollment == null)
+            {
+                Console.WriteLine("Enrollment not found.");
+                return;
+            }
+
+            enrollment.ProgressPercentage = newProgress;
+
+            if(newProgress == 100)
+            {
+                enrollment.Status = EnrollmentStatus.Completed;
+            }
+
+            Context.SaveChanges();
+
+            Console.WriteLine("Enrollment Progress Updated successfully.");
+        }
+
+        public void PublishCourse(int courseID)
+        {
+            var course = Context.Courses.FirstOrDefault(c => c.Id == courseID);
+            if(course == null)
+            {
+                Console.WriteLine("Course not found.");
+                return;
+            }
+
+            course.PublishedDate = DateTime.Now;
+            course.IsPublished = true;
+
+            Context.SaveChanges();
+            Console.WriteLine("Course published successfully.");
+        }
     }
 }

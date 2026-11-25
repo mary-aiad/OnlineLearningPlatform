@@ -173,13 +173,22 @@ namespace OnlineLearningPlatform
             #endregion
 
             #region Read
-            LearningPlatformActions actions = new LearningPlatformActions(context);
+            //LearningPlatformActions actions = new LearningPlatformActions(context);
 
-            actions.FilterCourses(500, 1000);
-            actions.FindCourseByID(1);
-            actions.FindCourseByTitle("SQL Fundamentals");
-            actions.CourseRoster(4);
+            //actions.FilterCourses(500, 1000);
+            //actions.FindCourseByID(1);
+            //actions.FindCourseByTitle("SQL Fundamentals");
+            //actions.CourseRoster(4);
             #endregion
+
+            #region Update
+            //LearningPlatformActions actions = new LearningPlatformActions(context);
+            //actions.UpdateCoursePrice(1, 600);
+            //actions.updateEnrollmentProgress(1,2,50);
+            //actions.updateEnrollmentProgress(1, 2, 100);
+            //actions.PublishCourse(5);
+            #endregion
+
         }
     }
 }
