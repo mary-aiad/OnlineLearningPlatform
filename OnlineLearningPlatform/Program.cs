@@ -196,6 +196,12 @@ namespace OnlineLearningPlatform
             //actions.Unenroll(1, 4);
             #endregion
 
+            #region BulkOperations
+            //LearningPlatformActions actions = new LearningPlatformActions(context);
+            //actions.RaiseCoursePrice(CourseLevel.Advanced, 10);
+            //actions.DeleteBulk(EnrollmentStatus.Dropped);
+            #endregion
+
         }
     }
 }

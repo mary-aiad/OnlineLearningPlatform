@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using OnlineLearningPlatform.Data;
 using OnlineLearningPlatform.Models;
 using System;
@@ -297,6 +298,22 @@ namespace OnlineLearningPlatform
             {
                 Console.WriteLine("Course deletion failed.");
             }
+        }
+
+        public void RaiseCoursePrice(CourseLevel courseLevel, decimal raisedPercentage)
+        {
+
+            int affectedRows = Context.Courses.Where(c => c.IsPublished && c.Level == courseLevel)
+                                                    .ExecuteUpdate(setter => setter.SetProperty(c => c.Price, c => c.Price * raisedPercentage));
+            
+            Console.WriteLine($"Updated courses: {affectedRows}");
+        }
+
+        public void DeleteBulk(EnrollmentStatus enrollmentStatus)
+        {
+            var affectedRows = Context.Enrollments.Where(e => e.Status == enrollmentStatus)
+                                                    .ExecuteDelete();
+            Console.WriteLine($"Deleted enrollments: {affectedRows}");
         }
     }
 }
