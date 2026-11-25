@@ -228,5 +228,75 @@ namespace OnlineLearningPlatform
             Context.SaveChanges();
             Console.WriteLine("Course published successfully.");
         }
+
+
+        public void Unenroll(int studentID, int courseId)
+        {
+            var enrollment = Context.Enrollments.FirstOrDefault(c => c.CourseId == courseId && c.StudentId == studentID);
+            if (enrollment == null)
+            {
+                Console.WriteLine("Enrollment not found.");
+                return;
+            }
+
+            Context.Enrollments.Remove(enrollment);
+            Context.SaveChanges();
+            Console.WriteLine("Student unenrolled successfully.");
+        }
+
+        public void DeleteCategory(int categoryId)
+        {
+            var category = Context.Categories.FirstOrDefault(c => c.Id == categoryId);
+            if (category == null)
+            {
+                Console.WriteLine("Category not found.");
+                return;
+            }
+
+            bool hasSubCategories = Context.Categories.Any(c => c.ParentCategoryId == categoryId);
+            if (hasSubCategories)
+            {
+                Console.WriteLine("Cannot delete category because it has sub-categories.");
+                return;
+            }
+
+            Context.Categories.Remove(category);
+            try
+            {
+                Context.SaveChanges();
+                Console.WriteLine("Category deleted successfully.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Cannot delete category because it has related courses.");
+            }
+        }
+
+        public void DeleteCourse(int courseId)
+        {
+            var course = Context.Courses.FirstOrDefault(c => c.Id == courseId);
+            if (course == null)
+            {
+                Console.WriteLine("Course not found.");
+                return;
+            }
+
+            var enrollments = Context.Enrollments
+                                    .Where(e => e.CourseId == courseId)
+                                    .ToList();
+            try
+            {
+                Context.Enrollments.RemoveRange(enrollments);
+                Context.SaveChanges();
+
+                Context.Courses.Remove(course);
+                Context.SaveChanges();
+                Console.WriteLine($"{enrollments.Count} enrollments were removed because " + "the course was deleted.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Course deletion failed.");
+            }
+        }
     }
 }

@@ -189,6 +189,13 @@ namespace OnlineLearningPlatform
             //actions.PublishCourse(5);
             #endregion
 
+            #region Delete
+            //LearningPlatformActions actions = new LearningPlatformActions(context);
+            //actions.DeleteCategory(1);
+            //actions.DeleteCourse(1);
+            //actions.Unenroll(1, 4);
+            #endregion
+
         }
     }
 }
